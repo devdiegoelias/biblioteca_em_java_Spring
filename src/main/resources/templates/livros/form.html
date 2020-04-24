@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  	layout:decorate="layout">
+  	layout:decorate="layout" lang="pt-BR">
 <head>
-	<meta charset="UTF-8" />
 	<title>Livros</title>
 		<!-- Bootstrap -->
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css}" />
-	<link rel="stylesheet" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
-	
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style>
+		background-image: url("https://st2.depositphotos.com/2786775/6154/v/950/depositphotos_61547925-stock-illustration-books-doodles.jpg");
+		background-repeat: no-repeat;
+	</style>
 </head>
 <body>
-	<form method="post" action="#" th:action="@{/livros/gravar}" th:object="${livro}">
-		<input type="hidden" th:field="*{id}">
-	    Nome: <input type="text" th:field="*{nome}">
-	    <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span><br>
-	    Quantidade Páginas: <input type="text" th:field="*{quantidadePaginas}">
-	    <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Error</span><br>
-	    Autor: <select th:field="*{autor}">
-	        	<option value="">Selecione o Autor</option>
-	        	<option th:each="autor : ${listaAutores}" th:value="${autor.id}" th:text="${autor.nome} " selected="selected"></option>
-	    	</select><br>
-	
-	    <input type="submit">
-	</form>
+	<div class="container-fluid">
+		<form method="post" action="#" th:action="@{/livros/gravar}" th:object="${livro}">
 
-	<script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}" ></script>
-
+			<input type="hidden" th:field="*{id}">
+			
+			<div class="form-group">
+				<label for="">Nome</label>
+			    <input type="text" class="form-control"  th:field="*{nome}">
+			    <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span>
+		    </div>
+		    
+		    <div class="form-group">
+			    <label for="">Quantidade Páginas:</label>
+			    <input type="text" class="form-control" th:field="*{quantidadePaginas}">
+			    <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Error</span>
+		    </div>
+		    
+		    <div class="form-group">
+			    <label for="">Autor:</label>
+			    <select class="form-control" th:field="*{autor}">
+		        	<option value="">Selecione o Autor</option>
+		        	<option th:each="autor : ${listaAutores}" th:value="${autor.id}" th:text="${autor.nome} " selected="selected"></option>
+			    </select>
+		    </div>
+		
+		    <input class="btn btn-success" type="submit">
+		</form>
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

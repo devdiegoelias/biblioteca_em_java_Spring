@@ -3,6 +3,8 @@
   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   	layout:decorate="layout" lang="pt-BR">
 <head>
+	<title>Autor</title>
+		<!-- Bootstrap -->
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
@@ -11,29 +13,21 @@
 		background-image: url("https://st2.depositphotos.com/2786775/6154/v/950/depositphotos_61547925-stock-illustration-books-doodles.jpg");
 		background-repeat: no-repeat;
 	</style>
-	<title>Livros</title>
 </head>
 <body>
 	<div class="container-fluid">
-	<a href="" class="btn btn-info" th:href="@{/livros/novo}">Novo</a>
-		<table class="table table-striped">
-			<tr>
-				<th>ID</th>
-				<th>NOME</th>
-				<th>AUTOR</th>
-				<th>PÁGINAS</th>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr th:each="livro : ${livros}">
-				<td th:text="${livro?.id}">id do livro</td>
-				<td th:text="${livro?.nome}">nome do livro</td>
-				<td th:text="${livro?.autor?.nome}">nome do livro</td>
-				<td th:text="${livro?.quantidadePaginas}">total de páginas do livro</td>
-				<td><a href="" class="btn btn-warning" th:href="@{'/livros/alterar/' + ${livro.id}}">Alterar</a></td>
-				<td><a href="" class="btn btn-danger" th:href="@{'/livros/excluir/' + ${livro.id}}">Excluir</a></td>
-			</tr>
-		</table>
+		<form method="post" action="#" th:action="@{/autor/gravar}" th:object="${autor}">
+
+			<input type="hidden" th:field="*{id}">
+			
+			<div class="form-group">
+				<label for="">Nome</label>
+			    <input type="text" class="form-control"  th:field="*{nome}">
+			    <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span>
+		    </div>
+		
+		    <input class="btn btn-success" type="submit">
+		</form>
 	</div>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
