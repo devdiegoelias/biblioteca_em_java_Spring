@@ -11,7 +11,7 @@
 		background-image: url("https://st2.depositphotos.com/2786775/6154/v/950/depositphotos_61547925-stock-illustration-books-doodles.jpg");
 		background-repeat: no-repeat;
 	</style>
-	<title>Livros</title>
+	<title>Autores</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -23,11 +23,11 @@
 				<th></th>
 				<th></th>
 			</tr>
-			<tr th:each="livro : ${livros}">
-				<td th:text="${livro?.id}">id do livro</td>
-				<td th:text="${livro?.nome}">nome do livro</td>
-				<td><a href="" class="btn btn-warning" th:href="@{'/livros/alterar/' + ${livro.id}}">Alterar</a></td>
-				<td><a href="" class="btn btn-danger" th:href="@{'/livros/excluir/' + ${livro.id}}">Excluir</a></td>
+			<tr th:each="livro : ${autor}">
+				<td th:text="${livro?.id}"></td>
+				<td th:text="${livro?.nome}"></td>
+				<td><a href="" class="btn btn-warning" th:href="@{'/autor/alterar/' + ${livro.id}}">Alterar</a></td>
+				<td><a href="" class="btn btn-danger" th:href="@{'/autor/excluir/' + ${livro.id}}">Excluir</a></td>
 			</tr>
 		</table>
 	</div>

@@ -27,7 +27,7 @@ public class AutorService {
 	}
 
 	public void excluiAutor(Long id) {
-		autorRepository.deleteById(id);
+		// autorRepository.deleteById(id);
 	}
 
 }
